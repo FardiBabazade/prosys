@@ -2,7 +2,8 @@
 
 import React from "react";
 import Login from "../pages/login/Login";
-import Students from "../pages/student/Students";
+// import Students from "../pages/student/Students";
+import  Subjects  from "../pages/subject/Subjects" ;
 
 export type RouteConfig = {
   path: string;
@@ -19,7 +20,7 @@ const routes: RouteConfig[] = [
   {
     path:'/admin',
     title:'admin',
-    element:<Students/>
+    element:<Subjects/>
   }
 ];
 

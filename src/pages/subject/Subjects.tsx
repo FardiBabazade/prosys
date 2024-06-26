@@ -1,8 +1,8 @@
 import Appbar from "../../components/appbar/Appbar";
 import Sidebar from "../../components/sidebar/Sidebar";
-// import SubjectTable from "../../components/subjectsection/SubjectTable";
+import SubjectTable from "../../components/subjectsection/SubjectTable";
 
-const Students = () => {
+const Subjects = () => {
     return (
         <>
           <Appbar/>
@@ -12,4 +12,4 @@ const Students = () => {
     )
 };
 
-export default Students;
+export default Subjects;

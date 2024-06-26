@@ -14,11 +14,21 @@ export default function Sidebar() {
 
 
         <Box sx={{
-            width: 250, height: '100vh', backgroundColor: '#1976d2',
+            width: 203, height: '92vh',position:'absolute',top:'80px', backgroundColor: '#1976d2',
             color: '#fff'
         }} >
 
             <List >
+                
+            <ListItem disablePadding>
+                    <ListItemButton>
+                        <ListItemIcon>
+                            <ImportContactsIcon  style={{fill:'#fff'}} />
+                        </ListItemIcon >
+                        <ListItemText >Subjects</ListItemText>
+                    </ListItemButton>
+                </ListItem>
+                
                 <ListItem disablePadding>
                     <ListItemButton>
                         <ListItemIcon>
@@ -28,14 +38,6 @@ export default function Sidebar() {
                     </ListItemButton>
                 </ListItem>
 
-                <ListItem disablePadding>
-                    <ListItemButton>
-                        <ListItemIcon>
-                            <ImportContactsIcon  style={{fill:'#fff'}} />
-                        </ListItemIcon >
-                        <ListItemText >Subjects</ListItemText>
-                    </ListItemButton>
-                </ListItem>
 
                 <ListItem disablePadding>
                     <ListItemButton>

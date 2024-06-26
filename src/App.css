@@ -3,3 +3,9 @@
     padding: 0;
     box-sizing: border-box;
 }
+.css-mhc70k-MuiGrid-root>.MuiGrid-item {
+    padding-left: 0 !important;
+}
+.css-1oqqzyl-MuiContainer-root {
+    width: 65% !important;
+}

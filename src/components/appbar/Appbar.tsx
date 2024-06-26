@@ -1,4 +1,5 @@
 import * as React from 'react';
+import logo from "../../assets/prosyslogo.png";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -13,6 +14,10 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import Grid from '@mui/material/Grid';
+import SubjectTable from '../subjectsection/SubjectTable';
+// import StudentTable from '../studentsection/StudentTable';
+// import SubjectTable from '../subjectsection/SubjectTable';
+// import StudentTable from '../studentsection/StudentTable';
 
 
 function Appbar() {
@@ -40,7 +45,6 @@ function Appbar() {
     <Grid item xs={12}>
     <AppBar position="static">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, ml: 2 }} />
           <Typography
             variant="h6"
             noWrap
@@ -57,7 +61,8 @@ function Appbar() {
               textDecoration: 'none',
             }}
           >
-            LOGO
+          <img style={{mixBlendMode:'multiply',height:'80px',
+    width: '122px'}} src={logo} alt="" />
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -123,7 +128,30 @@ function Appbar() {
           </Box>
         </Toolbar>
     </AppBar>
+      
+
+
+
+
+
+
+    <Grid container >
+            <Grid item xs={2}>
+             
+            </Grid>
+            <Grid style={{textAlign:'center'}} justifyContent="center" alignItems="center" item xs={10}>
+              
+              <Box bgcolor="primary.dark" p={0}>
+                
+          
+              </Box>
+              <SubjectTable/>
+            </Grid>
+          </Grid>
+
+      
     </Grid>
+  
   </Grid>
     
    
