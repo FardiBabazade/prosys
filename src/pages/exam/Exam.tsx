@@ -1,7 +1,7 @@
 import Appbar from "../../components/appbar/Appbar";
 import Sidebar from "../../components/sidebar/Sidebar";
 
-const Students = () => {
+const Exam = () => {
     return (
         <>
           <Appbar/>
@@ -10,4 +10,4 @@ const Students = () => {
     )
 };
 
-export default Students;
+export default Exam;

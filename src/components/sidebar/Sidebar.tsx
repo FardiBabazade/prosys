@@ -7,6 +7,8 @@ import ListItemText from '@mui/material/ListItemText';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import ImportContactsIcon from '@mui/icons-material/ImportContacts';
 import CreateIcon from '@mui/icons-material/Create';
+import { Link } from 'react-router-dom';
+
 
 
 export default function Sidebar() {
@@ -14,38 +16,47 @@ export default function Sidebar() {
 
 
         <Box sx={{
-            width: 203, height: '92vh',position:'absolute',top:'80px', backgroundColor: '#1976d2',
+            width: 203, height: '92vh', position: 'absolute', top: '80px', backgroundColor: '#1976d2',
             color: '#fff'
         }} >
 
             <List >
-                
-            <ListItem disablePadding>
-                    <ListItemButton>
-                        <ListItemIcon>
-                            <ImportContactsIcon  style={{fill:'#fff'}} />
-                        </ListItemIcon >
-                        <ListItemText >Subjects</ListItemText>
-                    </ListItemButton>
-                </ListItem>
-                
+
+
                 <ListItem disablePadding>
+                    <Link to="/admin">
+                        <ListItemButton>
+                            <ListItemIcon>
+                                <ImportContactsIcon style={{ fill: '#fff' }} />
+                            </ListItemIcon >
+                            <ListItemText >Subjects</ListItemText>
+                        </ListItemButton>
+                    </Link>
+
+                </ListItem>
+                <ListItem disablePadding>
+                <Link to="/student">
                     <ListItemButton>
                         <ListItemIcon>
-                            <PersonOutlineIcon style={{fill:'#fff'}} />
+                            <PersonOutlineIcon style={{ fill: '#fff' }} />
                         </ListItemIcon>
                         <ListItemText >Students</ListItemText>
                     </ListItemButton>
+                    </Link>
+
                 </ListItem>
 
 
                 <ListItem disablePadding>
+                <Link to="/exam">
+
                     <ListItemButton>
                         <ListItemIcon>
-                            <CreateIcon  style={{fill:'#fff'}} />
+                            <CreateIcon style={{ fill: '#fff' }} />
                         </ListItemIcon>
                         <ListItemText >Exams</ListItemText>
                     </ListItemButton>
+                    </Link>
                 </ListItem>
             </List>
         </Box>

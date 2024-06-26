@@ -22,7 +22,7 @@ import Alert from '@mui/material/Alert';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 
-const SubjectTable: React.FC = () => {
+const ExamTable: React.FC = () => {
     const [lessonCode, setLessonCode] = useState('');
     const [lessonName, setLessonName] = useState('');
     const [classNumber, setClassNumber] = useState<number | string>('');
@@ -86,7 +86,7 @@ const SubjectTable: React.FC = () => {
         <Container>
            
             <Button style={{marginTop:'100px'}} startIcon={<AddCircleIcon   />} variant="contained" color="primary" onClick={handleDialogOpen}>
-            Register New Subject
+            Register New Exam
             </Button>
             <Dialog open={dialogOpen} onClose={handleDialogClose}>
                 <DialogTitle>Register Subject</DialogTitle>
@@ -190,4 +190,4 @@ const SubjectTable: React.FC = () => {
     );
 };
 
-export default SubjectTable;
+export default ExamTable;
