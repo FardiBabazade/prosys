@@ -6,6 +6,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import ImportContactsIcon from '@mui/icons-material/ImportContacts';
+import LogoutIcon from '@mui/icons-material/Logout';
 import CreateIcon from '@mui/icons-material/Create';
 import { Link } from 'react-router-dom';
 
@@ -13,7 +14,6 @@ import { Link } from 'react-router-dom';
 
 export default function Sidebar() {
     return (
-
 
         <Box sx={{
             width: 203, height: '92vh', position: 'absolute', top: '80px', backgroundColor: '#1976d2',
@@ -57,6 +57,23 @@ export default function Sidebar() {
                         <ListItemText >Exams</ListItemText>
                     </ListItemButton>
                     </Link>
+
+
+                    
+                </ListItem>
+
+                
+                <ListItem disablePadding>
+                <Link to="/">
+
+                    <ListItemButton style={{position:'fixed',bottom:'30px'}}>
+                        <ListItemIcon>
+                            <LogoutIcon style={{ fill: '#fff' }} />
+                        </ListItemIcon>
+                        <ListItemText >Log out</ListItemText>
+                    </ListItemButton>
+                    </Link>
+                    
                 </ListItem>
             </List>
         </Box>

@@ -4,7 +4,6 @@ import {
     TextField,
     Button,
     Grid,
-    Typography,
     Snackbar,
     Dialog,
     DialogActions,
@@ -46,13 +45,11 @@ const SubjectTable: React.FC = () => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
-        // Validate form fields
         if (!studentNumber || !studentName || !studentSurname || !studentClass) {
             alert('Please fill out all fields.');
             return;
         }
 
-        // Create student data object
         const studentData: Student = {
             studentNumber,
             studentName,
@@ -60,22 +57,18 @@ const SubjectTable: React.FC = () => {
             studentClass,
         };
 
-        // Save student data to localStorage
         const updatedStudents = [...students, studentData];
         localStorage.setItem('students', JSON.stringify(updatedStudents));
         setStudents(updatedStudents);
 
-        // Show success alert
         setAlertMessage('Successfully registered student!');
         setOpen(true);
 
-        // Clear form fields
         setStudentNumber('');
         setStudentName('');
         setStudentSurname('');
         setStudentClass('');
 
-        // Close dialog
         setDialogOpen(false);
     };
 

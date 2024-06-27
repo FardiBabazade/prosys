@@ -1,10 +1,7 @@
-// Router.tsx
 
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom"; // Import BrowserRouter and other necessary components
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom"; 
 import routes, { RouteConfig } from "./routes";
-
-console.log('r',routes)
 
 const renderRoutes = (routes: RouteConfig[]): JSX.Element[] => {
     return routes.map(({ path, element }, index) => (

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import logo from "../../assets/prosyslogo.png";
+import logo from "../../assets/prosyslogoo.png";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -7,15 +7,10 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 import Grid from '@mui/material/Grid';
 import SubjectTable from '../subjectsection/SubjectTable';
-
 import { useLocation } from 'react-router-dom';
 import StudentTable from '../studentsection/StudentTable';
 import ExamTable from '../examsection/ExamTable';
@@ -36,10 +31,6 @@ function Appbar() {
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
   };
 
   return (
@@ -65,7 +56,7 @@ function Appbar() {
             }}
           >
             <img
-              style={{ mixBlendMode: 'multiply', height: '80px', width: '122px' }}
+              style={{ height: '95px', width: '95px' }}
               src={logo}
               alt="Logo"
             />
@@ -100,7 +91,6 @@ function Appbar() {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {/* Add menu items here */}
             </Menu>
           </Box>
 
@@ -127,7 +117,6 @@ function Appbar() {
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {/* Add any additional components or text on the right side */}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>

@@ -4,7 +4,6 @@ import {
     TextField,
     Button,
     Grid,
-    Typography,
     Snackbar,
     Dialog,
     DialogActions,
@@ -16,11 +15,14 @@ import {
     TableContainer,
     TableHead,
     TableRow,
-    Paper
+    Paper,
+    IconButton,
+    Box
 } from '@mui/material';
 import Alert from '@mui/material/Alert';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
-
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const SubjectTable: React.FC = () => {
     const [lessonCode, setLessonCode] = useState('');
@@ -32,6 +34,7 @@ const SubjectTable: React.FC = () => {
     const [alertMessage, setAlertMessage] = useState<string>('');
     const [dialogOpen, setDialogOpen] = useState<boolean>(false);
     const [lessons, setLessons] = useState<any[]>([]);
+    const [editIndex, setEditIndex] = useState<number | null>(null);
 
     useEffect(() => {
         const existingLessons = JSON.parse(localStorage.getItem('lessons') || '[]');
@@ -41,7 +44,6 @@ const SubjectTable: React.FC = () => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
-        // Create lesson data object
         const lessonData = {
             lessonCode,
             lessonName,
@@ -50,28 +52,29 @@ const SubjectTable: React.FC = () => {
             teacherLastName,
         };
 
-        // Save lesson data to localStorage
-        const existingLessons = JSON.parse(localStorage.getItem('lessons') || '[]');
-        const updatedLessons = [...existingLessons, lessonData];
+        let updatedLessons;
+        if (editIndex !== null) {
+            updatedLessons = lessons.map((lesson, index) => index === editIndex ? lessonData : lesson);
+            setAlertMessage('Successfully updated Subject!');
+        } else {
+            updatedLessons = [...lessons, lessonData];
+            setAlertMessage('Successfully added Subject!');
+        }
         localStorage.setItem('lessons', JSON.stringify(updatedLessons));
         setLessons(updatedLessons);
 
-        // Log to console (optional)
         console.log('Lesson Data:', lessonData);
 
-        // Show success alert
-        setAlertMessage('Successfully added Subject!');
         setOpen(true);
 
-        // Clear form fields
         setLessonCode('');
         setLessonName('');
         setClassNumber('');
         setTeacherFirstName('');
         setTeacherLastName('');
 
-        // Close dialog
         setDialogOpen(false);
+        setEditIndex(null);
     };
 
     const handleDialogOpen = () => {
@@ -80,16 +83,40 @@ const SubjectTable: React.FC = () => {
 
     const handleDialogClose = () => {
         setDialogOpen(false);
+        setEditIndex(null);
+        setLessonCode('');
+        setLessonName('');
+        setClassNumber('');
+        setTeacherFirstName('');
+        setTeacherLastName('');
+    };
+
+    const handleEdit = (index: number) => {
+        const lesson = lessons[index];
+        setLessonCode(lesson.lessonCode);
+        setLessonName(lesson.lessonName);
+        setClassNumber(lesson.classNumber);
+        setTeacherFirstName(lesson.teacherFirstName);
+        setTeacherLastName(lesson.teacherLastName);
+        setEditIndex(index);
+        setDialogOpen(true);
+    };
+
+    const handleDelete = (index: number) => {
+        const updatedLessons = lessons.filter((_, i) => i !== index);
+        localStorage.setItem('lessons', JSON.stringify(updatedLessons));
+        setLessons(updatedLessons);
+        setAlertMessage('Successfully deleted Subject!');
+        setOpen(true);
     };
 
     return (
         <Container>
-           
-            <Button style={{marginTop:'100px'}} startIcon={<AddCircleIcon   />} variant="contained" color="primary" onClick={handleDialogOpen}>
-            Register New Subject
+            <Button style={{ marginTop: '20px' }} startIcon={<AddCircleIcon />} variant="contained" color="primary" onClick={handleDialogOpen}>
+                Register New Subject
             </Button>
             <Dialog open={dialogOpen} onClose={handleDialogClose}>
-                <DialogTitle>Register Subject</DialogTitle>
+                <DialogTitle>{editIndex !== null ? 'Edit Subject' : 'Register Subject'}</DialogTitle>
                 <form onSubmit={handleSubmit}>
                     <DialogContent>
                         <Grid container spacing={2}>
@@ -147,7 +174,7 @@ const SubjectTable: React.FC = () => {
                             Cancel
                         </Button>
                         <Button type="submit" color="primary">
-                            Register Lesson
+                            {editIndex !== null ? 'Update Subject' : 'Register Subject'}
                         </Button>
                     </DialogActions>
                 </form>
@@ -166,21 +193,32 @@ const SubjectTable: React.FC = () => {
                 <Table>
                     <TableHead>
                         <TableRow>
-                            <TableCell  style={{fontWeight:'bold'}}>Lesson Code</TableCell>
-                            <TableCell style={{fontWeight:'bold'}}>Lesson Name</TableCell>
-                            <TableCell style={{fontWeight:'bold'}}>Class Number</TableCell>
-                            <TableCell style={{fontWeight:'bold'}}>Teacher First Name</TableCell>
-                            <TableCell style={{fontWeight:'bold'}}>Teacher Last Name</TableCell>
+                            <TableCell style={{ fontWeight: 'bold' }}>Lesson Code</TableCell>
+                            <TableCell style={{ fontWeight: 'bold' }}>Lesson Name</TableCell>
+                            <TableCell style={{ fontWeight: 'bold' }}>Class Number</TableCell>
+                            <TableCell style={{ fontWeight: 'bold' }}>Teacher First Name</TableCell>
+                            <TableCell style={{ fontWeight: 'bold' }}>Teacher Last Name</TableCell>
+                            <TableCell style={{ fontWeight: 'bold' }}>Actions</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {lessons.map((lesson, index) => (
                             <TableRow key={index}>
-                                <TableCell style={{textAlign:'center'}}>{lesson.lessonCode}</TableCell>
-                                <TableCell style={{textAlign:'center'}}>{lesson.lessonName}</TableCell>
-                                <TableCell style={{textAlign:'center'}}>{lesson.classNumber}</TableCell>
-                                <TableCell style={{textAlign:'center'}}>{lesson.teacherFirstName}</TableCell>
-                                <TableCell style={{textAlign:'center'}}>{lesson.teacherLastName}</TableCell>
+                                <TableCell style={{ textAlign: 'center' }}>{lesson.lessonCode}</TableCell>
+                                <TableCell style={{ textAlign: 'center' }}>{lesson.lessonName}</TableCell>
+                                <TableCell style={{ textAlign: 'center' }}>{lesson.classNumber}</TableCell>
+                                <TableCell style={{ textAlign: 'center' }}>{lesson.teacherFirstName}</TableCell>
+                                <TableCell style={{ textAlign: 'center' }}>{lesson.teacherLastName}</TableCell>
+                                <TableCell style={{ textAlign: 'center' }}>
+                                    <Box display="flex" justifyContent="center">
+                                        <IconButton style={{color:'#1976d2'}} onClick={() => handleEdit(index)}>
+                                            <EditIcon />
+                                        </IconButton>
+                                        <IconButton style={{color:'#c90d0d'}} onClick={() => handleDelete(index)}>
+                                            <DeleteIcon />
+                                        </IconButton>
+                                    </Box>
+                                </TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
