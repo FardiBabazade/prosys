@@ -120,7 +120,7 @@ function Appbar() {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
+            <Tooltip title="Fərdi Babazadə">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0, mr: 3 }}>
                 <Avatar
                   alt="User Avatar"

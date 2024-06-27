@@ -19,10 +19,7 @@ export default function Sidebar() {
             width: 203, height: '92vh', position: 'absolute', top: '80px', backgroundColor: '#1976d2',
             color: '#fff'
         }} >
-
             <List >
-
-
                 <ListItem disablePadding>
                     <Link to="/admin">
                         <ListItemButton>

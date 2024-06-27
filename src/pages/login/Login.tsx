@@ -85,7 +85,8 @@ const LoginPage: React.FC = () => {
             >
               Sign In
             </Button>
-      
+      <p><strong>username:</strong> admin <br/>
+       <strong>password:</strong> admin </p>
           </Box>
         </Box>
         <Snackbar open={open} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
